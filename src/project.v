@@ -21,7 +21,7 @@ assign uo_out  = uart_data;
 assign uio_out = {7'b0000000, done_reg};
 assign uio_oe  = 8'b00000001;
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0};
+wire _unused = &{ena, clk, rst_n, 1'b0};
  reg [6:0] shift_reg;
   reg [2:0] bit_count;
   reg done_reg;
@@ -59,5 +59,12 @@ assign uio_oe  = 8'b00000001;
   assign uio_oe  = 8'b00000001;
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, uio_in, ui_in[7:1], 1'b0};
+ wire _unused = &{
+    ena,
+    clk,
+    rst_n,
+    uio_in,
+    ui_in[7:1],
+    1'b0
+};
 endmodule
