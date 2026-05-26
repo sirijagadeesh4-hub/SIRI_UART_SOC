@@ -1,42 +1,57 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
-# Tiny Tapeout Verilog Project Template
+# SIRI_UART_SOC
 
-- [Read the documentation for project](docs/info.md)
+UART based System-on-Chip (SoC) designed using Verilog HDL for Tiny Tapeout.
 
-## What is Tiny Tapeout?
+## Project Overview
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
+This project implements a simple UART receiver SoC.
 
-To learn more and get started, visit https://tinytapeout.com.
+The design receives serial UART data through the input pin and converts it into parallel output data using internal shift registers and sequential logic.
 
-## Set up your Verilog project
+## Features
 
-1. Add your Verilog files to the `src` folder.
-2. Edit the [info.yaml](info.yaml) and update information about your project, paying special attention to the `source_files` and `top_module` properties. If you are upgrading an existing Tiny Tapeout project, check out our [online info.yaml migration tool](https://tinytapeout.github.io/tt-yaml-upgrade-tool/).
-3. Edit [docs/info.md](docs/info.md) and add a description of your project.
-4. Adapt the testbench to your design. See [test/README.md](test/README.md) for more information.
+* UART serial receiver
+* Parallel data output
+* TinyTapeout compatible
+* Verilog RTL implementation
+* Simple synthesizable architecture
 
-The GitHub action will automatically build the ASIC files using [LibreLane](https://www.zerotoasiccourse.com/terminology/librelane/).
+## Top Module
 
-## Enable GitHub actions to build the results page
+tt_um_siri_uart_soc
 
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
+## Pin Description
 
-## Resources
+| Pin         | Function             |
+| ----------- | -------------------- |
+| ui_in[0]    | UART RX serial input |
+| uo_out[7:0] | Received UART data   |
+| uio_out[0]  | Reception done flag  |
+| clk         | System clock         |
+| rst_n       | Active low reset     |
 
-- [FAQ](https://tinytapeout.com/faq/)
-- [Digital design lessons](https://tinytapeout.com/digital_design/)
-- [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-- [Join the community](https://tinytapeout.com/discord)
-- [Build your design locally](https://www.tinytapeout.com/guides/local-hardening/)
+## Working
 
-## What next?
+1. UART serial data enters through `ui_in[0]`
+2. Bits are shifted into an internal register
+3. After receiving all bits:
 
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
-  - Bluesky [@tinytapeout.com](https://bsky.app/profile/tinytapeout.com)
+   * Data is available on `uo_out`
+   * Done flag becomes high on `uio_out[0]`
+
+## Simulation
+
+Simulation is performed using:
+
+* Icarus Verilog
+* Cocotb Testbench
+
+## Tiny Tapeout
+
+https://tinytapeout.com
+
+## Author
+
+SIRI
