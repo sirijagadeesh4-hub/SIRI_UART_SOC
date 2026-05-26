@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  title: "Firmware Signature Verification"
+  title: "UART_SOC"
   author: "Siri Jagadeesh"
   discord: ""
   description: "Verifies firmware signature using a secure hash comparison module"
@@ -9,7 +9,7 @@ project:
 
   tiles: "1x1"
 
-  top_module: "tt_um_siri_firmware_signature_verification"
+  top_module: "tt_um_siri_uart_soc"
 
   source_files:
     - "project.v"
