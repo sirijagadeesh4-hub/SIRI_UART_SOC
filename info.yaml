@@ -9,7 +9,7 @@ project:
 
   tiles: "1x1"
 
-  top_module: "tt_um_siri_uart_soc"
+  top_module: "tt_um_uart_soc"
 
   source_files:
     - "project.v"
