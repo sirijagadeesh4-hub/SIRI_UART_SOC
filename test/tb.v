@@ -14,7 +14,7 @@ module tb;
     reg rst_n;
 
     // Instantiate DUT
-    tt_um_siri_uart_soc dut (
+    tt_um_uart_soc dut (
         .ui_in(ui_in),
         .uo_out(uo_out),
         .uio_in(uio_in),
